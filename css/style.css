@@ -621,12 +621,26 @@ footer {
 
     .interest-block .visual {
         width: 100%;
-        height: 250px;
+        height: 300px;
+        flex: none;
+        /* Disable flex scaling */
     }
 
     .contact-details {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .social-big {
+        flex-wrap: wrap;
+        /* Allow wrapping */
+        gap: 15px;
+        /* Reduce gap */
+    }
+
+    .social-big a {
+        font-size: 1.2rem;
+        /* Reduce font size */
     }
 }
 
