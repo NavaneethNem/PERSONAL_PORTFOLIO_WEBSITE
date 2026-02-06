@@ -76,7 +76,7 @@ submitPostBtn.addEventListener('click', async () => {
             newPostContent.value = "";
         } catch (error) {
             console.error("Error posting:", error);
-            alert("Failed to post. Check console.");
+            alert("Failed to post: " + error.message + "\n\n(Tip: Check your Firestore Security Rules in the Firebase Console)");
         }
     }
 });
