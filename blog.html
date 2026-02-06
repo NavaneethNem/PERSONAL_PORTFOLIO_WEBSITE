@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thoughts | Navaneeth Mohan</title>
+    <!-- Favicon (To be updated) -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html#home" class="logo">Navaneeth<span class="dot">.</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="blog.html" class="nav-link active">Thoughts</a></li>
+                <li><a href="index.html#contact" class="nav-link contact-btn">Let's Talk</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <h1>My Thoughts<span class="dot">.</span></h1>
+            <p>A collection of random musings, updates, and things I find interesting.</p>
+
+            <div class="auth-section">
+                <button id="login-btn" class="btn btn-primary"><i class="fab fa-google"></i> Sign in to Comment</button>
+                <div id="user-info" class="hidden">
+                    <img id="user-avatar" src="" alt="Avatar">
+                    <span id="user-name"></span>
+                    <button id="logout-btn" class="btn-text">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Feed -->
+    <section class="blog-feed-section">
+        <div class="container">
+
+            <!-- Admin Post Input (Hidden by default, visible only to Owner) -->
+            <div id="admin-post-area" class="post-input-card hidden">
+                <textarea id="new-post-content" placeholder="What's on your mind?"></textarea>
+                <div class="post-actions">
+                    <button id="submit-post-btn" class="btn btn-primary">Post</button>
+                </div>
+            </div>
+
+            <!-- Feed -->
+            <div id="posts-feed" class="posts-container">
+                <!-- Posts will be injected here via JS -->
+                <div class="loading-spinner">
+                    <i class="fas fa-circle-notch fa-spin"></i> Loading thoughts...
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Navaneeth Mohan. Crafted with <i class="fas fa-heart" style="color: var(--primary-color);"></i>
+            and Code.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/blog.js"></script>
+    <script src="js/script.js"></script> <!-- Reusing for mobile menu logic -->
+</body>
+
+</html>
