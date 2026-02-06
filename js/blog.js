@@ -84,8 +84,22 @@ submitPostBtn.addEventListener('click', async () => {
 // Feed Functionality
 const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
 
+let feedLoaded = false;
+// Timeout check for loading
+setTimeout(() => {
+    if (!feedLoaded && postsFeed.innerHTML.includes("Loading")) {
+        postsFeed.innerHTML = '<div style="text-align:center; color: #ff4d4d;"><p>Loading is taking longer than expected.</p><p>Please check your internet connection or try refreshing.</p></div>';
+    }
+}, 10000); // 10 seconds timeout
+
 onSnapshot(q, (snapshot) => {
+    feedLoaded = true;
     postsFeed.innerHTML = ""; // Clear feed
+
+    if (snapshot.empty) {
+        postsFeed.innerHTML = "<p style='text-align: center; color: #666;'>No thoughts yet. Check back soon!</p>";
+        return;
+    }
 
     snapshot.forEach((docSnap) => {
         const post = docSnap.data();

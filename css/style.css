@@ -642,6 +642,17 @@ footer {
         font-size: 1.2rem;
         /* Reduce font size */
     }
+
+    .blog-header {
+        margin-top: 120px;
+        /* Increased top margin for mobile */
+        padding: 30px 0;
+    }
+
+    .posts-container {
+        padding: 0 15px;
+        /* Add side padding for mobile */
+    }
 }
 
 /* Scroll Animations Classes */
@@ -679,6 +690,9 @@ footer {
 }
 
 /* Active Slide */
+.slide.active {
+    opacity: 1;
+}
 
 /* Blog Page Styles */
 .blog-header {
